@@ -416,6 +416,30 @@ main{
     margin-top: 10px;
     margin-left: 10px;
 }
+.tenderBox{
+    position: absolute;
+    top: 0%;
+    padding: 30px 0px 170px 0px;
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgba(231, 230, 230, 0.493);
+    font-family: cursive;
+    color: rgb(116, 81, 41);
+    z-index: 1000;
+}
+.tenders{
+    display: flex;
+    flex-direction: column;
+}
+td{
+    text-align: center;
+    width: 150px;
+}
 
 @media only screen and (max-width: 639px) {
     .turnOver{

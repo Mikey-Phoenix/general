@@ -34,7 +34,8 @@
                 <img src="./avatarsymbols/Earth_kingdom.jpg" alt="" id="earth">
                 <div class="angle" id="earth-fire">></div>
             </div>
-            <p>Be careful of the number on th card you play, playing a card with number less than what is on the deck will award you a loss. This means to stay in the game you have to play a card with a number greater than the number on the card you're playing on. This rule applies to all cards that do not have all four elements on it.</p>
+            <p>You can play any number within the same element or play a card with a different element having the same number as the card that was played last.</p><br/>
+            <p>The game ends when the player wins, the player loses or when the market cards run out. There are a total of 50 market cards left after the start button is pressed, once all the market cards are exhausted a special round <span class="yellow">Tender!!!</span> is initiated that counts the number on each card the player and computer had before <span class="yellow">Tender!!!</span> was initiated. If the player has a total number less than that of computer the player wins else, the player loses. The only other way a player wins is by exhausting all their cards.</p>
             <h3>How To Play On Each Card</h3>
             <div class="howToPlayCards">
                 <div>
@@ -87,15 +88,30 @@
             <div class="times">You've played <span class="inner">0</span> rounds</div>
         </div>
         <div class="computer-cards">
-
+            
         </div>
         <div class="player-cards">
-
+            
         </div>
         <div class="played-cards">
             <p class="number">1</p>
         </div>
         <div class="market-cards">A</div>
+        <div class="tenderBox">
+            <p class="how">Lowest value wins!</p>
+            <table class="tenders">
+                <tr>
+                    <td class="tenderPlayer">Player</td>
+                    <td> = </td>
+                    <td class="playerTenderInner"></td>
+                </tr>
+                <tr>
+                    <td class="tenderComputer">Computer</td>
+                    <td> = </td>
+                    <td class="computerTenderInner"></td>
+                </tr>
+            </table>
+        </div>
     </main>
     <script src="./cardgame.js"></script>
 </body>

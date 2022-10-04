@@ -31,6 +31,13 @@ let winner = document.querySelector('.winner');
 let music = document.querySelector('.music');
 let musicOn = document.querySelector('.musicOn');
 
+const tenderBox = document.querySelector('.tenderBox');
+const playerTenderValue = document.querySelector('.playerTenderInner');
+const computerTenderValue = document.querySelector('.computerTenderInner');
+
+let playerTender = 0;
+let computerTender = 0;
+
 let computer_storeNum;
 let computer_storeNum_cards = [];
 let computer_storeElem;
@@ -41,6 +48,8 @@ let player_storeElem;
 var computer_cards = [];
 let playable = [];
 let plays = []
+
+let leftOver = 50;
 
 let list;
 let values = [];
@@ -130,6 +139,7 @@ btn.addEventListener('click', ()=>{
 
         let number = document.createElement('p');
         number.classList.add('number');
+        number.classList.add('player-number');
         if (player_card.style.backgroundImage == avatar) {
             number.innerHTML = ``;
         } else {
@@ -250,9 +260,6 @@ played_cards.addEventListener('click', (e)=>{
                 clearDeck();
                 console.log(values.length)
             }
-            // console.log(' ')
-
-                // console.log(a);
                 
         } else {
 
@@ -268,7 +275,7 @@ played_cards.addEventListener('click', (e)=>{
                                 values.push(item);
                             }
                             
-                    })
+                        })
                     if(values.length == 0){
                         ++w
                         successMessage.innerHTML = 'Congratulations! You won!';
@@ -314,6 +321,35 @@ played_cards.addEventListener('click', (e)=>{
             
                         console.log(' ')
                 
+                    } else if (player_storeNum == e.target.children[0].innerHTML) {
+                        played_cards.style.cssText = `background: ${player_storeElem}; background-size: 70%, 50%; background-repeat: no-repeat; background-position: center; background-color: rgb(231, 230, 230)`;
+                        e.target.children[0].innerHTML = player_storeNum;
+                        document.getElementsByClassName('active').item(0).classList.add('none');
+                        autoplay();
+                        list.forEach((item)=>{
+                            if (item.classList.contains('none')) {
+                                item.style.display = 'none'
+                            } else {
+                                values.push(item);
+                            }
+                            
+                        })
+                        if(values.length == 0){
+                            ++w
+                            successMessage.innerHTML = 'Congratulations! You won!';
+                            success.style.display = 'flex';
+                            computer.innerHTML = '';
+                            outside.innerHTML = ++outside.innerHTML;
+                            winner.innerHTML = outside.innerHTML;
+                            setTimeout(() => {
+                                success.style.display = 'none'
+                            }, 3000);
+                            clearDeck();
+                            console.log(values.length)
+                        }
+            
+                        console.log(' ')
+                
                     } else {
                         success.style.display = 'flex';
                         successMessage.innerHTML = 'You have to play a Fire, an Air or an Avatar card';
@@ -325,7 +361,6 @@ played_cards.addEventListener('click', (e)=>{
                 break;
             
                 case air:
-                    console.log('air');
                     if (player_storeElem == water) {
                         checking(e);
 
@@ -384,6 +419,35 @@ played_cards.addEventListener('click', (e)=>{
             
                         console.log(' ')
                     
+                    } else if (player_storeNum == e.target.children[0].innerHTML) {
+                        played_cards.style.cssText = `background: ${player_storeElem}; background-size: 70%, 50%; background-repeat: no-repeat; background-position: center; background-color: rgb(231, 230, 230)`;
+                        e.target.children[0].innerHTML = player_storeNum;
+                        document.getElementsByClassName('active').item(0).classList.add('none');
+                        autoplay();
+                        list.forEach((item)=>{
+                            if (item.classList.contains('none')) {
+                                item.style.display = 'none'
+                            } else {
+                                values.push(item);
+                            }
+                            
+                        })
+                        if(values.length == 0){
+                            ++w
+                            successMessage.innerHTML = 'Congratulations! You won!';
+                            success.style.display = 'flex';
+                            computer.innerHTML = '';
+                            outside.innerHTML = ++outside.innerHTML;
+                            winner.innerHTML = outside.innerHTML;
+                            setTimeout(() => {
+                                success.style.display = 'none'
+                            }, 3000);
+                            clearDeck();
+                            console.log(values.length)
+                        }
+            
+                        console.log(' ')
+                
                     } else {
                         success.style.display = 'flex';
                         successMessage.innerHTML = 'You have to play an Air, a Water or an Avatar card';
@@ -395,7 +459,6 @@ played_cards.addEventListener('click', (e)=>{
                 break;
                 
                 case water:
-                    console.log('water');
                     if (player_storeElem == earth) {
                         checking(e);
 
@@ -453,18 +516,46 @@ played_cards.addEventListener('click', (e)=>{
                 
                         console.log(' ')
                 
-                        } else {
+                    } else if (player_storeNum == e.target.children[0].innerHTML) {
+                        played_cards.style.cssText = `background: ${player_storeElem}; background-size: 70%, 50%; background-repeat: no-repeat; background-position: center; background-color: rgb(231, 230, 230)`;
+                        e.target.children[0].innerHTML = player_storeNum;
+                        document.getElementsByClassName('active').item(0).classList.add('none');
+                        autoplay();
+                        list.forEach((item)=>{
+                            if (item.classList.contains('none')) {
+                                item.style.display = 'none'
+                            } else {
+                                values.push(item);
+                            }
+                            
+                        })
+                        if(values.length == 0){
+                            ++w
+                            successMessage.innerHTML = 'Congratulations! You won!';
                             success.style.display = 'flex';
-                            successMessage.innerHTML = 'You have to play a Water, an Earth or an Avatar card';
+                            computer.innerHTML = '';
+                            outside.innerHTML = ++outside.innerHTML;
+                            winner.innerHTML = outside.innerHTML;
                             setTimeout(() => {
                                 success.style.display = 'none'
                             }, 3000);
+                            clearDeck();
+                            console.log(values.length)
                         }
+            
+                        console.log(' ')
+                
+                    } else {
+                        success.style.display = 'flex';
+                        successMessage.innerHTML = 'You have to play a Water, an Earth or an Avatar card';
+                        setTimeout(() => {
+                            success.style.display = 'none'
+                        }, 3000);
+                    }
                     
                 break;
 
                 case earth:
-                    console.log('earth');
                     if (player_storeElem == fire) {
                         checking(e);
 
@@ -494,41 +585,70 @@ played_cards.addEventListener('click', (e)=>{
             
                     } else if (player_storeElem == avatar) {
                             
-                            played_cards.style.cssText = `background: ${player_storeElem}; background-size: 70%, 50%; background-repeat: no-repeat; background-position: center; background-color: rgb(231, 230, 230)`;
-                            e.target.children[0].innerHTML = '';
-                            document.getElementsByClassName('active').item(0).classList.add('none');;
-                                autoplay();
+                        played_cards.style.cssText = `background: ${player_storeElem}; background-size: 70%, 50%; background-repeat: no-repeat; background-position: center; background-color: rgb(231, 230, 230)`;
+                        e.target.children[0].innerHTML = '';
+                        document.getElementsByClassName('active').item(0).classList.add('none');;
+                            autoplay();
 
-                            list.forEach((item)=>{
-                                if (item.classList.contains('none')) {
-                                    item.style.display = 'none'
-                                } else {
-                                    values.push(item);
-                                }
-                                
-                            })
-                            if(values.length == 0){
-                                ++w
-                            successMessage.innerHTML = 'Congratulations! You won!';
-                            success.style.display = 'flex';
-                                outside.innerHTML = ++outside.innerHTML;
-                                winner.innerHTML = outside.innerHTML;
-                                setTimeout(() => {
-                                    success.style.display = 'none'
-                                }, 3000);
-                                clearDeck();
-                                console.log(values.length)
+                        list.forEach((item)=>{
+                            if (item.classList.contains('none')) {
+                                item.style.display = 'none'
+                            } else {
+                                values.push(item);
                             }
-                
-                            console.log(' ')
-                
-                        } else {
-                            success.style.display = 'flex';
-                            successMessage.innerHTML = 'You have to play a Earth, a Fire or an Avatar card';
+                            
+                        })
+                        if(values.length == 0){
+                            ++w
+                        successMessage.innerHTML = 'Congratulations! You won!';
+                        success.style.display = 'flex';
+                            outside.innerHTML = ++outside.innerHTML;
+                            winner.innerHTML = outside.innerHTML;
                             setTimeout(() => {
                                 success.style.display = 'none'
                             }, 3000);
+                            clearDeck();
+                            console.log(values.length)
                         }
+            
+                        console.log(' ')
+                
+                    } else if (player_storeNum == e.target.children[0].innerHTML) {
+                        played_cards.style.cssText = `background: ${player_storeElem}; background-size: 70%, 50%; background-repeat: no-repeat; background-position: center; background-color: rgb(231, 230, 230)`;
+                        e.target.children[0].innerHTML = player_storeNum;
+                        document.getElementsByClassName('active').item(0).classList.add('none');
+                        autoplay();
+                        list.forEach((item)=>{
+                            if (item.classList.contains('none')) {
+                                item.style.display = 'none'
+                            } else {
+                                values.push(item);
+                            }
+                            
+                        })
+                        if(values.length == 0){
+                            ++w
+                            successMessage.innerHTML = 'Congratulations! You won!';
+                            success.style.display = 'flex';
+                            computer.innerHTML = '';
+                            outside.innerHTML = ++outside.innerHTML;
+                            winner.innerHTML = outside.innerHTML;
+                            setTimeout(() => {
+                                success.style.display = 'none'
+                            }, 3000);
+                            clearDeck();
+                            console.log(values.length)
+                        }
+            
+                        console.log(' ')
+                
+                    } else {
+                        success.style.display = 'flex';
+                        successMessage.innerHTML = 'You have to play a Earth, a Fire or an Avatar card';
+                        setTimeout(() => {
+                            success.style.display = 'none'
+                        }, 3000);
+                    }
                     
                 break;
 
@@ -616,6 +736,9 @@ market.addEventListener('click', ()=>{
 
     market_card.appendChild(market_number);
     player.appendChild(market_card);
+    leftOver = leftOver - 1;
+    console.log(leftOver);
+    marketCheck()
     autoplay();
 })
 
@@ -625,29 +748,17 @@ function checking(e) {
     if (player_storeNum < played_number) {
         losing();
         clearDeck();
-    } else{
+    } else {
         display(e);
     }
 }
 
 
 function display(e) {
-    if (player_storeNum >= e.target.children[0].innerHTML) {
-        console.log(e.target.children[0].innerHTML);
-        console.log(player_storeNum);
-        played_cards.style.cssText = `background: ${player_storeElem}; background-size: 70%, 50%; background-repeat: no-repeat; background-position: center; background-color: rgb(231, 230, 230)`;
-        e.target.children[0].innerHTML = player_storeNum;
-        document.getElementsByClassName('active').item(0).classList.add('none');
-        autoplay();
-    } else {
-        successMessage.innerHTML = `Play a number greater or equal to ${e.target.children[0].innerHTML}`;
-        successMessage.style.textAlign = 'center'
-        success.style.display = 'flex';
-        setTimeout(() => {
-            success.style.display = 'none'
-        }, 3000)
-    }
-    
+    played_cards.style.cssText = `background: ${player_storeElem}; background-size: 70%, 50%; background-repeat: no-repeat; background-position: center; background-color: rgb(231, 230, 230)`;
+    e.target.children[0].innerHTML = player_storeNum;
+    document.getElementsByClassName('active').item(0).classList.add('none');
+    autoplay();    
 }
 
 function losing() {
@@ -659,28 +770,92 @@ function losing() {
     }, 3000)
 }
 
+function marketCheck() {
+    let playerNumbers = Array.from(document.getElementsByClassName('player-number'))
+    
+    computer_cards.forEach((card)=>{
+        computerTender = parseInt(card.number) + computerTender;
+    })
+    if (leftOver === 0) {
+        playerNumbers.forEach((num)=>{
+            if (num.innerHTML == '') {
+                num.innerHTML = 0
+            } else {
+                playerTender = playerTender + parseInt(num.innerHTML)
+            }
+        })
+        successMessage.innerHTML = 'Tender!!!';
+        successMessage.style.fontSize = '50px';
+        success.style.display = 'flex';
+        computer.innerHTML = '';
+        player.style.display = 'none';
+        outside.innerHTML = ++outside.innerHTML;
+        winner.innerHTML = outside.innerHTML;
+        setTimeout(() => {
+            success.style.display = 'none'
+            successMessage.style.fontSize = '30px';
+            played_cards.style.display = 'none';
+            computer.innerHTML = '';
+            player.innerHTML = '';
+            market.style.display = 'none';
+            let tempCards = Array.from(document.getElementsByClassName('computer-card'));
+            tempCards.forEach((card)=>{
+                card.style.display = 'none'
+            })
+            computer.style.display = 'none';
+            tenderBox.style.display = 'flex'
+            
+            setTimeout(() => {
+                playerTenderValue.innerHTML = playerTender;
+                computerTenderValue.innerHTML = computerTender;
+                setTimeout(() => {
+                    if (playerTender < computerTender) {
+                        successMessage.innerHTML = 'You win!';
+                        success.style.display = 'flex';
+                        computer.innerHTML = '';
+                        tenderBox.style.display = 'none';
+                        computer_storeNum_cards = [];
+                        computer_storeElem_cards = [];
+                        computer_cards = [];
+                        setTimeout(() => {
+                            clearDeck();
+                            success.style.display = 'none'
+                        }, 2000); 
+                    } else if (playerTender == computerTender) {
+                        successMessage.innerHTML = 'There was a tie';
+                        success.style.display = 'flex';
+                        computer.innerHTML = '';
+                        tenderBox.style.display = 'none';
+                        computer_storeNum_cards = [];
+                        computer_storeElem_cards = [];
+                        computer_cards = [];
+                        setTimeout(() => {
+                            clearDeck();
+                            success.style.display = 'none'
+                        }, 2000); 
+                    } else {
+                        successMessage.innerHTML = 'You Lost';
+                        success.style.display = 'flex';
+                        computer.innerHTML = '';
+                        tenderBox.style.display = 'none';
+                        computer_storeNum_cards = [];
+                        computer_storeElem_cards = [];
+                        computer_cards = [];
+                        setTimeout(() => {
+                            clearDeck();
+                            success.style.display = 'none'
+                        }, 2000); 
+                    }
+                }, 2000);
+            }, 2000);
+        }, 3000);
+    }
+}
+
 function autoplay() {
     let tempa = played_cards.style.backgroundImage;
-    let tempb = played_cards_number.innerHTML;
-    // for (const card of computer_cards) {
-    //     if (card.element == tempa) {
-    //         // console.log(tempa);
-    //         playable.push(card);
-    //         console.log(playable);
-    //         // console.log(playable);
-    //         console.log(tempb);
-    //         localStorage.setItem('playable', JSON.stringify(playable))
-    //     }
-    //     return playable;
-    // }
     playable = []
-    // verificationOne(computer_cards, tempa, playable).then((res)=>{
-    // });
-    verificationThree(computer_cards, tempa, tempb);
-
-
-    // let ckkk = Array.from(document.getElementsByClassName('computer-card'));
-    // ckkk.push
+    verificationThree(computer_cards, tempa);
 }
 
 
@@ -698,7 +873,7 @@ function innerStress(array, blah, blahIndex) {
     return(blah)
 }
 
-function stresser(array, tempa, tempb, shown) {
+function stresser(array, tempa, shown) {
     switch (array) {
         case []:
             console.log(workJor);
@@ -715,6 +890,7 @@ function stresser(array, tempa, tempb, shown) {
             computer_cards.push(ve)
             shown = ++shown;
             computer.innerHTML = '';
+            marketCheck();
             for (let i = 0; i < shown; i++) {
                 let card = document.createElement('div');
                 card.innerHTML = '<p class = "title">A</p>';
@@ -731,13 +907,13 @@ function stresser(array, tempa, tempb, shown) {
                 
                     let workJor = getRandomValues(numArray.length); 
                     setTimeout(() => {
-                        console.log(blah);
                         
                         if (blah == undefined) {
                             let va = document.createElement('div');
                             va.classList.add('computer-card');
                             va.innerHTML = '<p class="title">A</p>';
                             computer.appendChild(va);
+                            leftOver = leftOver - 1;
                             let whatevsNum = getRandomValues(numArray.length);
                             let whatevsElem = getRandomValues(elemArray.length);
                             let ve = {
@@ -745,6 +921,7 @@ function stresser(array, tempa, tempb, shown) {
                                 number: `url("${numArray[whatevsNum]}")`
                             };
                             computer_cards.push(ve)
+                            marketCheck();
                         } else {
                             if (tempa == avatar) {
                                 played_cards_number.innerHTML = ``;
@@ -771,7 +948,7 @@ function stresser(array, tempa, tempb, shown) {
                                         }
                                 }
                             } else {
-                                if (workJor >= played_cards_number.innerHTML) {
+                                // if (workJor >= played_cards_number.innerHTML) {
 
                                     played_cards_number.innerHTML = `${workJor}`;
                                     computer_cards.splice(`${computer_cards.indexOf(`${blah[0]}`)}`, 1);
@@ -801,25 +978,27 @@ function stresser(array, tempa, tempb, shown) {
 
 
 
-                                } else {
-                                    let va = document.createElement('div');
-                                    va.classList.add('computer-card');
-                                    va.innerHTML = '<p class="title">A</p>';
-                                    computer.appendChild(va);
-                                    let whatevsNum = getRandomValues(numArray.length);
-                                    let whatevsElem = getRandomValues(elemArray.length);
-                                    let ve = {
-                                        element: `url("${elemArray[whatevsElem]}")`,
-                                        number: `url("${numArray[whatevsNum]}")`
-                                    };
-                                    computer_cards.push(ve)
+                                // } else {
+                                //     let va = document.createElement('div');
+                                //     va.classList.add('computer-card');
+                                //     va.innerHTML = '<p class="title">A</p>';
+                                //     computer.appendChild(va);
+                                //     leftOver = leftOver - 1;
+                                //     let whatevsNum = getRandomValues(numArray.length);
+                                //     let whatevsElem = getRandomValues(elemArray.length);
+                                //     let ve = {
+                                //         element: `url("${elemArray[whatevsElem]}")`,
+                                //         number: `url("${numArray[whatevsNum]}")`
+                                //     };
+                                //     computer_cards.push(ve)
+                                //     marketCheck();
                                     
-                                }
+                                // }
 
                                 
                             }
                         }
-                    }, 3000);
+                    }, 2000);
                     
             } else {
                 
@@ -828,6 +1007,7 @@ function stresser(array, tempa, tempb, shown) {
                 va.classList.add('computer-card');
                 va.innerHTML = '<p class="title">A</p>';
                 computer.appendChild(va);
+                leftOver = leftOver - 1;
                 let whatevsNum = getRandomValues(numArray.length);
                 let whatevsElem = getRandomValues(elemArray.length);
                 let ve = {
@@ -835,8 +1015,9 @@ function stresser(array, tempa, tempb, shown) {
                     number: `url("${numArray[whatevsNum]}")`
                 };
                 computer_cards.push(ve)
+                marketCheck();
                 shown = ++shown;
-
+                
                 setTimeout(() => {
                     computer.innerHTML = '';
                     for (let i = 0; i < shown; i++) {
@@ -845,16 +1026,16 @@ function stresser(array, tempa, tempb, shown) {
                         card.classList.add('computer-card');
                         computer.appendChild(card);   
                     }     
-                }, 3000);
+                }, 2000);
             }
             
         break;
     }
 }
 
-function verificationThree(array, tempa, tempb) {
+function verificationThree(array, tempa) {
     let compArray = Array.from(document.getElementsByClassName('computer-card'))
     let showing = compArray.length;
     let shown = showing;
-    stresser(array, tempa, tempb, shown)
+    stresser(array, tempa, shown)
 }
