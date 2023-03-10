@@ -23,6 +23,11 @@ let v = 0;
 let b = 0;
 
 
+let d = 0;
+let e = 0;
+let f = 0;
+
+
 
 let one = document.querySelector('#one');
 let two = document.querySelector('#two');
@@ -105,8 +110,8 @@ computerOption.addEventListener('click',()=>{
                                     }, 2000);
                                 }
                                 
-                                computerPlayImpossible();
                                 checking();
+                                computerPlayImpossible();
                             });
                         });
                         break;
@@ -131,8 +136,8 @@ computerOption.addEventListener('click',()=>{
                                     }, 2000);
                                 }
                                 
-                                computerPlayHard();
                                 checking();
+                                computerPlayHard();
                             });
                         });
                         break;
@@ -157,8 +162,8 @@ computerOption.addEventListener('click',()=>{
                                     }, 2000);
                                 }
                                 
-                                computerPlayStepOne();
                                 checkingpro();
+                                computerPlayStepOne();
                             });
                         });
                         break;
@@ -373,61 +378,139 @@ function computerPlayImpossible() {
             seven.innerHTML == 'X';
         }
     } 
-    if (one.innerHTML !== '') {
-        if (one.innerHTML !== 'X') {
-            if (one.innerHTML == two.innerHTML) {
-                three.innerHTML = 'X';
-            } if (one.innerHTML == three.innerHTML) {
+    if (one.innerHTML == 'O') {
+        if (one.innerHTML == two.innerHTML) {
+            three.innerHTML = 'X';
+        } if (one.innerHTML == three.innerHTML) {
+            two.innerHTML = 'X';
+        } if (one.innerHTML == four.innerHTML) {
+            seven.innerHTML = 'X';
+        } if (one.innerHTML == five.innerHTML) {
+            nine.innerHTML = 'X';
+        } if (one.innerHTML == seven.innerHTML) {
+            four.innerHTML = 'X';
+        } if (two.innerHTML == three.innerHTML && three.innerHTML == '') {
+            if (five.innerHTML == '') {
+                five.innerHTML = 'X';
+            } else {
                 two.innerHTML = 'X';
-            } if (one.innerHTML == four.innerHTML) {
-                seven.innerHTML = 'X';
-            } if (one.innerHTML == five.innerHTML) {
-                nine.innerHTML = 'X';
-            } if (one.innerHTML == seven.innerHTML) {
-                four.innerHTML = 'X';
             }
         }
-    } if (two.innerHTML !== '') {
-        if (two.innerHTML !== 'X') {
-            if (five.innerHTML !== 'X') {
-                if (two.innerHTML == five.innerHTML) {
+    } if (two.innerHTML == 'O') {
+        if (five.innerHTML !== 'X') {
+            if (two.innerHTML == five.innerHTML) {
+                if (eight.innerHTML !== 'O') {
                     eight.innerHTML = 'X';
-                } else  if (six.innerHTML == '') {
-                    six.innerHTML = 'X';
                 }
-            
-            }
-        }
-    } if (three.innerHTML !== '') {
-        if (three.innerHTML !== 'X') {
-            if (three.innerHTML == five.innerHTML) {
-                seven.innerHTML = 'X';
-            } if (three.innerHTML == six.innerHTML) {
-                nine.innerHTML = 'X';
-            } if (three.innerHTML == nine.innerHTML) {
+            } else  if (six.innerHTML == '') {
                 six.innerHTML = 'X';
             }
+        
+        }
+    } if (three.innerHTML == 'O') {
+        if (three.innerHTML == five.innerHTML) {
+            seven.innerHTML = 'X';
+        } if (three.innerHTML == six.innerHTML) {
+            nine.innerHTML = 'X';
+        } if (three.innerHTML == nine.innerHTML) {
+            six.innerHTML = 'X';
         }
     } if (three.innerHTML == '') {
-        if (five.innerHTML !== '') {
+        if (five.innerHTML !== '' && five.innerHTML !== 'X') {
             if (seven.innerHTML == five.innerHTML) {
                 three.innerHTML = 'X';
             }
+        } if (nine.innerHTML == 'O') {
+            function loop() {
+                let tempThreeArray = [one, two, four, six, seven, eight];
+                tempThreeArray.forEach((Three)=>{
+                    if (Three.innerHTML == '') {
+                        f = f;
+                        return f;
+
+                    } else {
+                        f = ++f;
+                        return f;
+
+                    }
+                })
+            }
+            let value = loop();
+            if (Boolean(value)) {
+                three.innerHTML = 'X';
+            } else {
+                three.innerHTML = '';
+            }
         }
     } 
-    if (four.innerHTML !== '') {
-        if (four.innerHTML !== 'X') {
+    if (four.innerHTML == 'O') {
+        let tempgridArray = [one, two, three, six, seven, eight, nine];
+        function loop() {
+            tempgridArray.forEach((grid)=>{
+                if (grid.innerHTML == '') {
+                    d = d;
+                    return d;
+                } else {
+                    d = ++d;
+                    return d;
+                }
+            })
+        }
+        let value = loop();     
+        if (one.innerHTML !== '') {
             if (four.innerHTML == five.innerHTML) {
                 six.innerHTML == 'X';
-            }
-        } if (one.innerHTML == '') {
+            } 
+        } else if (Boolean(value)) {
             one.innerHTML = 'X';
-        }
-    } if (six.innerHTML !== '') {
-        if (six.innerHTML !== 'X') {
-            if (six.innerHTML == five.innerHTML) {
-                four.innerHTML = 'X';
+        } if (five.innerHTML == six.innerHTML && five.innerHTML == 'X') {
+            if (two.innerHTML == '') {
+                two.innerHTML = 'X';
+            } else if (eight.innerHTML == '') {
+                eight.innerHTML = 'X';
+            } else if (one.innerHTML == '' && seven.innerHTML !== '') {
+                one.innerHTML = 'X';
+            } else if (nine.innerHTML == '') {
+                nine.innerHTML = 'X';
             }
+        }
+    } if (four.innerHTML == '') {
+        if (five.innerHTML == 'X') {
+            function loop() {
+                let tempboardArray = [one, two, three, seven, eight, nine];
+                tempboardArray.forEach((board)=>{
+                    if (board.innerHTML == '') {
+                        e = e;
+                        return e;
+                    } else{
+                        e = ++e;
+                        return e;
+                    }
+                })
+            }
+            let value = loop();
+            if (Boolean(value)) {
+                four.innerHTML = 'X'
+            }
+        } if (five.innerHTML == 'O') {
+            if (six.innerHTML == 'O') {
+                four.innerHTML = 'X'
+            }
+        } if (five.innerHTML == 'O') {
+            if (six.innerHTML == 'X') {
+                four.innerHTML = 'X'
+            }
+        } if (six.innerHTML == three.innerHTML) {
+            if (six.innerHTML == 'O') {
+                if (four.innerHTML == 'X') {
+                    nine.innerHTML = 'X';
+                    four.innerHTML = '';
+                }
+            }
+        }
+    } if (six.innerHTML == 'O') {
+        if (six.innerHTML == five.innerHTML) {
+            four.innerHTML = 'X';
         }
     } if (six.innerHTML == '') {
         if (five.innerHTML !== '') {
@@ -436,27 +519,29 @@ function computerPlayImpossible() {
             }
         }
     }
-    if (seven.innerHTML !== '') {
-        if (seven.innerHTML !== 'X') {
-            if (seven.innerHTML == eight.innerHTML) {
-                nine.innerHTML = 'X';
-            } if (seven.innerHTML == nine.innerHTML) {
+    if (seven.innerHTML == 'O') {
+        if (seven.innerHTML == eight.innerHTML) {
+            nine.innerHTML = 'X';
+        } if (seven.innerHTML == nine.innerHTML) {
+            if (eight.innerHTML !== 'O') {
                 eight.innerHTML = 'X';
-            } if (seven.innerHTML == five.innerHTML) {
+            }
+        } if (seven.innerHTML == five.innerHTML) {
+            if (three.innerHTML !== 'O') {
                 three.innerHTML == 'X';
             }
         }
-    } if (eight.innerHTML !== '') {
-        if (eight.innerHTML !== 'X') {
-            if (five.innerHTML !== '') {
-                if (eight.innerHTML == five.innerHTML) {
-                    two.innerHTML = 'X'
-                } else if (six.innerHTML == '') {
-                    six.innerHTML = 'X';
-                }
+    } if (eight.innerHTML == 'O') {
+        if (five.innerHTML !== '') {
+            if (eight.innerHTML == five.innerHTML) {
+                two.innerHTML = 'X'
+            } else if (six.innerHTML == '') {
+                six.innerHTML = 'X';
+            } else if (seven.innerHTML == '') {
+                seven.innerHTML = 'X';
             }
         }
-    } if (nine.innerHTML !== '') {
+    } if (nine.innerHTML == 'O') {
         if (nine.innerHTML == eight.innerHTML) {
             seven.innerHTML = 'X'
         } if (nine.innerHTML == seven.innerHTML) {
@@ -464,35 +549,151 @@ function computerPlayImpossible() {
         }
     }
     
-    
+    checking();
 }
 
 function computerPlayHard() {
     if (one.innerHTML !=='') {
-        if (one.innerHTML == two.innerHTML) {
-            three.innerHTML = 'X';
-        } if (one.innerHTML == four.innerHTML) {
-            seven.innerHTML = 'X';
-        } if (one.innerHTML == five.innerHTML) {
-            nine.innerHTML = 'X';
+        if (one.innerHTML == 'X') {
+            if (two.innerHTML == '') {
+                if (three.innerHTML == '') {
+                    three.innerHTML = 'X';
+                } else{
+                    if (six.innerHTML == '') {
+                        six.innerHTML = 'X';
+                    }
+                }
+            }
+        } else{
+            if (one.innerHTML == two.innerHTML) {
+                three.innerHTML = 'X';
+            } if (one.innerHTML == three.innerHTML) {
+                two.innerHTML = 'X';
+            } if (one.innerHTML == four.innerHTML) {
+                if (seven.innerHTML == '') {
+                    seven.innerHTML = 'X';
+                }
+            } if (one.innerHTML == seven.innerHTML && one.innerHTML == three.innerHTML) {
+                if (two.innerHTML == '') {
+                    two.innerHTML = 'X';
+                }
+            } else {
+                if (one.innerHTML == seven.innerHTML) {
+                    four.innerHTML = 'X';
+                } 
+            } if (one.innerHTML == five.innerHTML) {
+                nine.innerHTML = 'X';
+            }
         }
-    } if (two.innerHTML !== '') {
+    } if (one.innerHTML == '') {
+        if (four.innerHTML == seven.innerHTML) {
+            one.innerHTML = 'X';
+        }
+    } if (two.innerHTML == 'O') {
         if (two.innerHTML == five.innerHTML) {
             eight.innerHTML = 'X';
+        } if (two.innerHTML == eight.innerHTML) {
+            five.innerHTML = 'X';
+        } if (five.innerHTML == '' && eight.innerHTML == '') {
+            five.innerHTML = 'X';
+        }
+    } if (two.innerHTML == '') {
+        if (three.innerHTML == '' && seven.innerHTML == '') {
+            if (five.innerHTML =='O') {
+                    eight.innerHTML = 'X';
+            } 
+            if (eight.innerHTML !== '') {
+                if (eight.innerHTML !== 'X') {
+                    five.innerHTML = 'X';
+                }
+            }
         } 
+        if (three.innerHTML == 'O') {
+            if (three.innerHTML == one.innerHTML) {
+                if (five.innerHTML) {
+                    five.innerHTML = ''
+                }
+            }
+        }
     } if (three.innerHTML !== '') {
         if (three.innerHTML == five.innerHTML) {
             seven.innerHTML = 'X';
         } if (three.innerHTML == six.innerHTML) {
             nine.innerHTML = 'X';
         }
-    } if (seven.innerHTML !== '') {
-        if (seven.innerHTML == eight.innerHTML) {
-            nine.innerHTML = 'X';
-        } 
+    } if (three.innerHTML == 'O') {
+        if(two.innerHTML == ''){
+            if (five.innerHTML == '') {
+                if (three.innerHTML == seven.innerHTML && seven.innerHTML !== nine.innerHTML) {
+                    five.innerHTML = 'X';
+                }
+            }
+        }
+    } if(four.innerHTML !== ''){
+        if (four.innerHTML !== 'X') {
+            if (four.innerHTML == five.innerHTML) {
+                if (four.innerHTML !== seven.innerHTML) {
+                    six.innerHTML = 'X';
+                }
+            } if (four.innerHTML == six.innerHTML) {
+                five.innerHTML = 'X'
+            }
+        }
+    } if (four.innerHTML == '') {
+        if (five.innerHTML == 'X') {
+            if (six.innerHTML == 'O') {
+                four.innerHTML = 'X'
+            }
+        } if (five.innerHTML == 'O') {
+            if (six.innerHTML == 'O') {
+                four.innerHTML = 'X'
+            }
+        } if (five.innerHTML == 'O') {
+            if (six.innerHTML == 'X') {
+                four.innerHTML = 'X'
+            }
+        }
+    } if (seven.innerHTML == 'O') {
+        if (five.innerHTML == 'O') {
+            if (seven.innerHTML == eight.innerHTML) {
+                nine.innerHTML = 'X';
+            } if(seven.innerHTML == five.innerHTML){
+                three.innerHTML = 'X';
+                // four.innerHTML = '';
+            }
+        } else if(nine.innerHTML == seven.innerHTML){
+            if (three.innerHTML == 'X') {
+                if (two.innerHTML == '') {
+                    eight.innerHTML = 'X';
+                    three.innerHTML = '';
+                }
+            } 
+            // if (three.innerHTML == 'O') {
+            //     if (two.innerHTML == '') {
+            //         if (eight.innerHTML == '') {
+            //             eight.innerHTML = 'X';
+            //         } else if(five.innerHTML == ''){
+            //             five.innerHTML = 'X';
+            //         } else {
+            //             two.innerHTML = 'X';
+            //         }
+            //     }
+            // }
+        }
     } if (nine.innerHTML !== 'X') {
-        nine.innerHTML = 'X';
+        if (nine.innerHTML == 'O') {
+            one.innerHTML = 'X';
+        } else {
+            let tempArray = [one, two, three, four, six, seven, eight];
+            nine.innerHTML = 'X';
+            tempArray.forEach((temp)=>{
+                if (temp.innerHTML == 'X') {
+                    temp.innerHTML = '';
+                }
+            })
+        }
     }
+    checking;
 }
 
 function computerPlayStepTwo() {
